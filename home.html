@@ -1,0 +1,65 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block title %}Welcome - Auth App{% endblock %}
+
+{% block content %}
+{% if session.user_id %}
+    <div class="welcome-card">
+        <h1>Welcome back!</h1>
+        <p>You are successfully logged in.</p>
+        <div class="btn-group">
+            <a href="{{ url_for('profile') }}" class="btn-secondary">View Profile</a>
+            <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
+        </div>
+    </div>
+{% else %}
+    <div class="welcome-card">
+        <h1>Welcome to AuthApp</h1>
+        <p>A secure authentication system built with Flask and Google App Engine.</p>
+        <div class="btn-group">
+            <a href="{{ url_for('login') }}" class="btn-secondary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn-secondary">Register</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+<!-- templates/register.html -->
+{% extends "base.html" %}
+
+{% block title %}Register - Auth App{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2 style="color: #333; margin-bottom: 2rem;">Create Account</h2>
+</div>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+    </div>
+    
+    <button type="submit" class="btn">Register</button>
+    
+    <div class="text-center mt-3">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+</form>
+{% endblock %}
