@@ -4,8 +4,13 @@ from google.cloud import ndb
 import os
 import secrets
 
+from chat_g4f_routes import chat_bp
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', secrets.token_hex(16))
+
+# Register GPT Blueprint
+app.register_blueprint(chat_bp)
 
 # Initialize NDB client
 ndb_client = ndb.Client()
