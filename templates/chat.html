@@ -1,23 +1,17 @@
-{% extends "base.html" %}
-
-{% block title %}Chat – Auth App{% endblock %}
-
-{% block content %}
-<div class="text-center">
-  <h2 style="color: #333; margin-bottom: 2rem;">Chat with AI</h2>
-  <form method="POST">
-    <div class="form-group">
-      <label for="prompt">Your message:</label>
-      <textarea id="prompt" name="prompt" rows="4" class="form-control" required>{{ request.form.prompt }}</textarea>
-    </div>
-    <button type="submit" class="btn btn-primary mt-3">Send</button>
-  </form>
-
-  {% if response %}
-  <div class="mt-4">
-    <h4>AI Response:</h4>
-    <p>{{ response }}</p>
-  </div>
-  {% endif %}
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with g4f</title>
+</head>
+<body>
+    <h1>Chat with g4f</h1>
+    <form method="post">
+        <input type="text" name="prompt" placeholder="Ask me anything..." required>
+        <button type="submit">Send</button>
+    </form>
+    {% if reply %}
+        <h2>Reply:</h2>
+        <p>{{ reply }}</p>
+    {% endif %}
+</body>
+</html>
