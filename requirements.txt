@@ -1,7 +1,11 @@
 # requirements.txt
-Flask==2.3.3
-google-cloud-ndb==2.2.1
-Werkzeug==2.3.7
-Jinja2==3.1.2
+# Flask==2.3.3
+# google-cloud-ndb==2.2.1
+# Werkzeug==2.3.7
+# Jinja2==3.1.2
+Flask>=3.0
+google-cloud-ndb
+Werkzeug
+Jinja2
 # install g4f
 g4f[all]
