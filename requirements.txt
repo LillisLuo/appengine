@@ -8,4 +8,4 @@ Jinja2==3.1.2
 # Werkzeug
 # Jinja2
 # install g4f
-g4f[all]
+# g4f[all]
