@@ -3,21 +3,16 @@ import g4f
 
 @chat_bp.route('/chat', methods=['GET', 'POST'])
 def chat():
-    replies = {}
+    reply = ""
     if request.method == 'POST':
         prompt = request.form['prompt']
-        models = {
-            'gpt-4o': g4f.models.gpt_4o,
-            'claude-3.5-sonnet': g4f.models.claude_3_5_sonnet,
-            'llama-3': g4f.models.llama_3,
-        }
-        for name, model in models.items():
-            try:
-                response = g4f.ChatCompletion.create(
-                    model=model,
-                    messages=[{"role": "user", "content": prompt}]
-                )
-                replies[name] = response
-            except Exception as e:
-                replies[name] = f"Error: {e}"
-    return render_template('chat.html', replies=replies)
+        try:
+            client = Client()
+            reply = client.chat.completions.create(
+                model=g4f.models.gpt_4o,
+                messages=[{"role": "user", "content": prompt}]
+            ).choices[0].message.content
+        except Exception as e:
+            reply = f"Error: {e}"
+    
+    return render_template('chat.html', reply=reply)
