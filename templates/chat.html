@@ -10,14 +10,10 @@
     </form>
 </div>
 
-{% if replies %}
+{% if reply %}
     <div class="text-left" style="margin-top: 2rem;">
-        <h2>Replies:</h2>
-        <ul>
-            {% for model, response in replies.items() %}
-                <li><strong>{{ model }}:</strong> {{ response }}</li>
-            {% endfor %}
-        </ul>
+        <h2>Reply:</h2>
+        <p>{{ reply }}</p>
     </div>
 {% endif %}
 {% endblock %}
