@@ -1,21 +1,23 @@
 {% extends "base.html" %}
-
 {% block title %}Chat with g4f{% endblock %}
 
 {% block content %}
 <div class="text-center">
-    <h2 style="color: #333; margin-bottom: 2rem;">Chat with g4f</h2>
-    
+    <h1>Chat with g4f</h1>
     <form method="post">
         <input type="text" name="prompt" placeholder="Ask me anything..." required>
         <button type="submit">Send</button>
     </form>
-
-    {% if reply %}
-    <div style="margin-top: 2rem;">
-        <h3>Reply:</h3>
-        <p>{{ reply }}</p>
-    </div>
-    {% endif %}
 </div>
+
+{% if replies %}
+    <div class="text-left" style="margin-top: 2rem;">
+        <h2>Replies:</h2>
+        <ul>
+            {% for model, response in replies.items() %}
+                <li><strong>{{ model }}:</strong> {{ response }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 {% endblock %}
